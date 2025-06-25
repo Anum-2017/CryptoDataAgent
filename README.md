@@ -28,3 +28,16 @@
 | BNB    | Binance Coin  | 🟡     |
 
 
+---
+
+### Run (Web App)
+
+```sh
+uv run chainlit run main.py -w
+```
+
+Go to the following URL:
+
+```sh
+http://localhost:8000
+```
