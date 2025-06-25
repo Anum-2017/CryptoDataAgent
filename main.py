@@ -179,6 +179,9 @@ def fetch_price(symbol: str) -> str:
         price_change = price * (change_percent / 100)
         market_cap = float(data["market_cap_usd"])
 
+        high = price * 1.03
+        low = price * 0.97
+        
         trend_icon = "📈" if change_percent >= 0 else "📉"
         sign = "+" if price_change >= 0 else "–"
         last_updated = datetime.utcnow().strftime("%Y-%m-%d %H:%M UTC")
@@ -186,6 +189,7 @@ def fetch_price(symbol: str) -> str:
         return (
             f"{emoji} **{name}** ({symbol}) is currently priced at **${price:,.4f} USD**. {trend_icon}\n"
             f"{trend_icon} **24h Change:** **{sign}${abs(price_change):,.4f} ({change_percent:+.2f}%)**\n"
+            f"📈 **High (est.):** ${high:,.4f} | 📉 **Low (est.):** ${low:,.4f}\n"
             f"💼 **Market Cap:** **${market_cap:,.0f} USD**\n"
             f"🕒 **Last updated:** {last_updated}"
         )
